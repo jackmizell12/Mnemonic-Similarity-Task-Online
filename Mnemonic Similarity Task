@@ -1,0 +1,2460 @@
+var timeline = [];
+    
+     var SubjectID = jsPsych.data.getURLVariable('PROLIFIC_PID')
+     
+     jsPsych.data.addProperties({
+     subject: SubjectID});
+
+     var Welcome_screen = {
+         type: 'html-button-response',
+         stimulus: '<p> Welcome to the experiment. For the first part, we will ask you questions about yourself. Please answer honestly. There will also be attention checks throughout. You will need to answer all questions and pass the majority of checks to receive approval. </p>',
+         choices: ['Press to Continue']
+        }
+        
+        timeline.push(Welcome_screen)
+
+
+      var survey_trial_Open = {
+           type: 'survey-text',
+           questions: [{prompt: "How old are you?"}, {prompt: "What is your Gender?(e.g. Man, Woman, Nonbinary"}, {prompt: "What was your first language?(e.g. English, Spanish)"}]
+         }
+  
+       timeline.push(survey_trial_Open)
+        
+      
+      var page_SAM_options = ["Strongly Disagree", "Disagree somewhat", "Neither agree nor disagree", "Agree somewhat", "Agree strongly"];
+      var page_Dems_Ethnicity_options = ["Yes","No"];
+      var page_Dems_Race_options = ["Indigineous, American Indian or Alaskan native", "Asian","Black or African American","Native Hawaiian or Other Pacific Islander","White","Other"]
+      var page_Dems_Education = ["Less than a high school diploma","High school degree or equivalent (e.g. GED)","Some college, no degree", "Associates degree(e.g. AA, AS)", "Bachelor's degree(e.g. BA, BS)","Master's degree","Professional desgree(e.g., MD, DDS,DVM","Doctorate (e.g. PhD, EdD"]
+
+      var survey_trial_Dems = {
+      type: 'survey-multi-choice',
+      questions: [{prompt: "Are you of Hispanic, Latino, or of Spanish origin?", options: page_Dems_Ethnicity_options, name: 'Eth1', required: true},
+      {prompt: "How would you describe yourself?", options: page_Dems_Race_options, name: 'Race1', required: true},
+      {prompt: "What is the highest level of Education you obtained?", options: page_Dems_Education, name: 'Ed1', required: true},
+      {prompt: "Have you ever suffered from depression that significantly interfered with your daily functioning/activities?", options: page_Dems_Ethnicity_options, name: 'MH1', required: true},
+      {prompt: "Have you ever suffered from anxiety that significantly interfered with your functioning/activities?", options: page_Dems_Ethnicity_options, name: 'MH2', required: true}
+      ]
+      }
+      
+      timeline.push(survey_trial_Dems)
+
+
+      var survey_trial_SAM = {
+           type: 'survey-multi-choice',
+           preamble: 'Please indicate the strength of your agreement with each of the following statements.',
+           questions: [
+            //Episodic 
+           {prompt: "Specific events are difficult for me to recall.", options: page_SAM_options, name: 'E1', required: true},
+           {prompt: "When I remember events, I have a hard time determining the order of details in the event.", options: page_SAM_options, name: 'E2', required: true},
+           {prompt: "When I remember events, in general I can recall objects that were in the environment.", options: page_SAM_options,name: 'E3', required: true},
+           {prompt: "When I remember events, in general I can recall what I was wearing.",options: page_SAM_options, name: 'E4', required: true},
+           {prompt: "I am highly confident in my ability to remember past events.",options: page_SAM_options, name: 'E5', required: true},
+           {prompt: "When I remember events, I remember a lot of details.", options: page_SAM_options, name: 'E6', required: true},
+           {prompt: "When I remember events, in general I can recall which day of the week it was.", options: page_SAM_options, name: 'E7', required: true},
+           {prompt: "When I remember events, in general I can recall people, what they looked like, or what they were wearing.", options: page_SAM_options, name: 'E8', required: true},
+           //Semantic
+           {prompt: "I can learn and repeat facts easily, even if I don't remember where I learned them", options: page_SAM_options, name: 'SM1', required: true},
+           {prompt: "After I have read a novel or newspaper, I forget the facts after a few days", options: page_SAM_options, name: 'SM2', required: true},
+           {prompt: "After I have met someone once, I easily remember his or her name", options: page_SAM_options, name: 'SM3', required: true},
+           {prompt: "I can easily remember the names of famous people (sports figures, politicians, celebrities)", options: page_SAM_options, name: 'SM4', required: true},
+           {prompt: "I have a hard time remembering information I have learned at school or work", options: page_SAM_options, name: 'SM5', required: true},
+           {prompt: "I am very good at remembering information about people that I know (e.g., the names of a co-worker's children, their personalities, places friends have visited etc.)", options: page_SAM_options, name: 'SM6', required: true},
+           //Spatial
+           {prompt: "In general, my ability to navigate is better than most of my family/friends", options: page_SAM_options, name: 'SP1', required: true},
+           {prompt: "After I have visited an area, it is easy for me to find my way around the second time I visit", options: page_SAM_options, name: 'SP2', required: true},
+           {prompt: "I have a hard time judging the distance (e.g., in meters or kilometers) between familiar landmarks ", options: page_SAM_options, name: 'SP3', required: true},
+           {prompt: "I get lost easily, even in familiar areas", options: page_SAM_options, name: 'SP4', required: true},
+           {prompt: "If my route to work or school was blocked, I could easily find the next fastest way to get there", options: page_SAM_options, name: 'SP5', required: true},
+           {prompt: "I use specific landmarks for navigating", options: page_SAM_options, name: 'SP6', required: true},
+           //Future
+           {prompt: "When I imagine an event in the future, the event generates vivid mental images that are specific in time and place", options: page_SAM_options, name: 'F1', required: true},
+           {prompt: "When I imagine an event in the future, I can picture the spatial layout", options: page_SAM_options, name: 'F2', required: true},
+           {prompt: "When I imagine an event in the future, I can picture people and what they look like", options: page_SAM_options, name: 'F3', required: true},
+           {prompt: "When I imagine an event in the future, I can imagine how I may feel", options: page_SAM_options, name: 'F4', required: true},
+           {prompt: "When I imagine an event in the future, I can picture images (e.g., people, objects, etc)", options: page_SAM_options, name: 'F5', required: true},
+           {prompt: "I have a difficult time imagining specific events in the future", options: page_SAM_options, name: 'F6', required: true},
+           // attention
+           {prompt: "When I remember events, this is an attention check, please respond Neither agree nor disagree", options: page_SAM_options, name: 'Att1', required: true},
+           {prompt: "In general, this is an attention check, please respond Agree somewhat", options: page_SAM_options, name: 'Att2', required: true},
+           {prompt: "When I imagine an event in the future, this is an attention check, please respond Strongly disagree", options: page_SAM_options, name: 'Att3', required: true},
+           ],
+           randomize_question_order: true
+         }
+  
+        timeline.push(survey_trial_SAM)
+        
+        
+     
+
+ 
+
+      var Encode_Instruct = {
+         type: 'instructions',
+         pages: [ 'You will now be completing several quick tasks that will require you to focus. This will take around 15 minutes. Make sure you are free of distractions and in a quiet space. You will only receive credit for this task if you respond to trials and also pass the great majority of attention checks that are in each task.',
+           ' For the first part of this experiment, you are going to complete a judgement test. You will be shown a picture of an object and you have to judge if it is mostly an indoor or an outdoor object',
+         'For example, you see this tree here. You judge that trees typically belong outside, so you would then click the "o" key on your keyboard for outside. <img src="example.jpg"></img>',
+         'Now lets say, you see this clipboard here. You judge that clipboards belong inside, so you would click the "i" key on your keyboard for inside. <img src="Example2.jpg"></img>',
+         'This test is all about YOUR judgements, the most important thing is that you consider the object presented and give a response quickly. You will only have two seconds from the time the object is presented. There will also be attention checks on several trials, so make sure to pay attention.',
+         'Good luck!' 
+          ],
+          show_clickable_nav: true
+        }
+        
+        timeline.push(Encode_Instruct)
+
+      var Encode_Image = {
+          type: 'image-keyboard-response',
+          stimulus: jsPsych.timelineVariable('image'),
+          trial_duration: 3000,
+          prompt: "<p> Press the 'i' key for inside or Press the 'o' key for outside",
+          choices: ['i','o','m'],
+          response_ends_trial: false,
+          post_trial_gap: 1000
+          
+      }
+      
+      var encode_variables = [
+  {
+    "": 1,
+    "letter": "a",
+    "numbercode": 1,
+    "image": "001a.jpg"
+  },
+  {
+    "": 3,
+    "letter": "a",
+    "numbercode": 2,
+    "image": "002a.jpg"
+  },
+  {
+    "": 5,
+    "letter": "a",
+    "numbercode": 3,
+    "image": "003a.jpg"
+  },
+  {
+    "": 7,
+    "letter": "a",
+    "numbercode": 4,
+    "image": "004a.jpg"
+  },
+  {
+    "": 9,
+    "letter": "a",
+    "numbercode": 5,
+    "image": "005a.jpg"
+  },
+  {
+    "": 11,
+    "letter": "a",
+    "numbercode": 6,
+    "image": "006a.jpg"
+  },
+  {
+    "": 13,
+    "letter": "a",
+    "numbercode": 7,
+    "image": "007a.jpg"
+  },
+  {
+    "": 15,
+    "letter": "a",
+    "numbercode": 8,
+    "image": "008a.jpg"
+  },
+  {
+    "": 17,
+    "letter": "a",
+    "numbercode": 9,
+    "image": "009a.jpg"
+  },
+  {
+    "": 19,
+    "letter": "a",
+    "numbercode": 10,
+    "image": "010a.jpg"
+  },
+  {
+    "": 21,
+    "letter": "a",
+    "numbercode": 11,
+    "image": "011a.jpg"
+  },
+  {
+    "": 23,
+    "letter": "a",
+    "numbercode": 12,
+    "image": "012a.jpg"
+  },
+  {
+    "": 25,
+    "letter": "a",
+    "numbercode": 13,
+    "image": "013a.jpg"
+  },
+  {
+    "": 27,
+    "letter": "a",
+    "numbercode": 14,
+    "image": "014a.jpg"
+  },
+  {
+    "": 29,
+    "letter": "a",
+    "numbercode": 15,
+    "image": "015a.jpg"
+  },
+  {
+    "": 31,
+    "letter": "a",
+    "numbercode": 16,
+    "image": "016a.jpg"
+  },
+  {
+    "": 33,
+    "letter": "a",
+    "numbercode": 17,
+    "image": "017a.jpg"
+  },
+  {
+    "": 35,
+    "letter": "a",
+    "numbercode": 18,
+    "image": "018a.jpg"
+  },
+  {
+    "": 37,
+    "letter": "a",
+    "numbercode": 19,
+    "image": "019a.jpg"
+  },
+  {
+    "": 39,
+    "letter": "a",
+    "numbercode": 20,
+    "image": "020a.jpg"
+  },
+  {
+    "": 41,
+    "letter": "a",
+    "numbercode": 21,
+    "image": "021a.jpg"
+  },
+  {
+    "": 43,
+    "letter": "a",
+    "numbercode": 22,
+    "image": "022a.jpg"
+  },
+  {
+    "": 45,
+    "letter": "a",
+    "numbercode": 23,
+    "image": "023a.jpg"
+  },
+  {
+    "": 47,
+    "letter": "a",
+    "numbercode": 24,
+    "image": "024a.jpg"
+  },
+  {
+    "": 49,
+    "letter": "a",
+    "numbercode": 25,
+    "image": "025a.jpg"
+  },
+  {
+    "": 51,
+    "letter": "a",
+    "numbercode": 26,
+    "image": "026a.jpg"
+  },
+  {
+    "": 53,
+    "letter": "a",
+    "numbercode": 27,
+    "image": "027a.jpg"
+  },
+  {
+    "": 55,
+    "letter": "a",
+    "numbercode": 28,
+    "image": "028a.jpg"
+  },
+  {
+    "": 57,
+    "letter": "a",
+    "numbercode": 29,
+    "image": "029a.jpg"
+  },
+  {
+    "": 59,
+    "letter": "a",
+    "numbercode": 30,
+    "image": "030a.jpg"
+  },
+  {
+    "": 61,
+    "letter": "a",
+    "numbercode": 31,
+    "image": "031a.jpg"
+  },
+  {
+    "": 63,
+    "letter": "a",
+    "numbercode": 32,
+    "image": "032a.jpg"
+  },
+  {
+    "": 65,
+    "letter": "a",
+    "numbercode": 33,
+    "image": "033a.jpg"
+  },
+  {
+    "": 67,
+    "letter": "a",
+    "numbercode": 34,
+    "image": "034a.jpg"
+  },
+  {
+    "": 69,
+    "letter": "a",
+    "numbercode": 35,
+    "image": "035a.jpg"
+  },
+  {
+    "": 71,
+    "letter": "a",
+    "numbercode": 36,
+    "image": "036a.jpg"
+  },
+  {
+    "": 73,
+    "letter": "a",
+    "numbercode": 37,
+    "image": "037a.jpg"
+  },
+  {
+    "": 75,
+    "letter": "a",
+    "numbercode": 38,
+    "image": "038a.jpg"
+  },
+  {
+    "": 77,
+    "letter": "a",
+    "numbercode": 39,
+    "image": "039a.jpg"
+  },
+  {
+    "": 79,
+    "letter": "a",
+    "numbercode": 40,
+    "image": "040a.jpg"
+  },
+  {
+    "": 81,
+    "letter": "a",
+    "numbercode": 41,
+    "image": "041a.jpg"
+  },
+  {
+    "": 83,
+    "letter": "a",
+    "numbercode": 42,
+    "image": "042a.jpg"
+  },
+  {
+    "": 85,
+    "letter": "a",
+    "numbercode": 43,
+    "image": "043a.jpg"
+  },
+  {
+    "": 87,
+    "letter": "a",
+    "numbercode": 44,
+    "image": "044a.jpg"
+  },
+  {
+    "": 89,
+    "letter": "a",
+    "numbercode": 45,
+    "image": "045a.jpg"
+  },
+  {
+    "": 91,
+    "letter": "a",
+    "numbercode": 46,
+    "image": "046a.jpg"
+  },
+  {
+    "": 93,
+    "letter": "a",
+    "numbercode": 47,
+    "image": "047a.jpg"
+  },
+  {
+    "": 95,
+    "letter": "a",
+    "numbercode": 48,
+    "image": "048a.jpg"
+  },
+  {
+    "": 97,
+    "letter": "a",
+    "numbercode": 49,
+    "image": "049a.jpg"
+  },
+  {
+    "": 99,
+    "letter": "a",
+    "numbercode": 50,
+    "image": "050a.jpg"
+  },
+  {
+    "": 101,
+    "letter": "a",
+    "numbercode": 51,
+    "image": "051a.jpg"
+  },
+  {
+    "": 103,
+    "letter": "a",
+    "numbercode": 52,
+    "image": "052a.jpg"
+  },
+  {
+    "": 105,
+    "letter": "a",
+    "numbercode": 53,
+    "image": "053a.jpg"
+  },
+  {
+    "": 107,
+    "letter": "a",
+    "numbercode": 54,
+    "image": "054a.jpg"
+  },
+  {
+    "": 109,
+    "letter": "a",
+    "numbercode": 55,
+    "image": "055a.jpg"
+  },
+  {
+    "": 111,
+    "letter": "a",
+    "numbercode": 56,
+    "image": "056a.jpg"
+  },
+  {
+    "": 113,
+    "letter": "a",
+    "numbercode": 57,
+    "image": "057a.jpg"
+  },
+  {
+    "": 115,
+    "letter": "a",
+    "numbercode": 58,
+    "image": "058a.jpg"
+  },
+  {
+    "": 117,
+    "letter": "a",
+    "numbercode": 59,
+    "image": "059a.jpg"
+  },
+  {
+    "": 119,
+    "letter": "a",
+    "numbercode": 60,
+    "image": "060a.jpg"
+  },
+  {
+    "": 121,
+    "letter": "a",
+    "numbercode": 61,
+    "image": "061a.jpg"
+  },
+  {
+    "": 123,
+    "letter": "a",
+    "numbercode": 62,
+    "image": "062a.jpg"
+  },
+  {
+    "": 125,
+    "letter": "a",
+    "numbercode": 63,
+    "image": "063a.jpg"
+  },
+  {
+    "": 127,
+    "letter": "a",
+    "numbercode": 64,
+    "image": "064a.jpg"
+  },
+  {
+    "": 129,
+    "letter": "a",
+    "numbercode": 65,
+    "image": "065a.jpg"
+  },
+  {
+    "": 131,
+    "letter": "a",
+    "numbercode": 66,
+    "image": "066a.jpg"
+  },
+  {
+    "": 133,
+    "letter": "a",
+    "numbercode": 67,
+    "image": "067a.jpg"
+  },
+  {
+    "": 135,
+    "letter": "a",
+    "numbercode": 68,
+    "image": "068a.jpg"
+  },
+  {
+    "": 137,
+    "letter": "a",
+    "numbercode": 69,
+    "image": "069a.jpg"
+  },
+  {
+    "": 139,
+    "letter": "a",
+    "numbercode": 70,
+    "image": "070a.jpg"
+  },
+  {
+    "": 141,
+    "letter": "a",
+    "numbercode": 71,
+    "image": "071a.jpg"
+  },
+  {
+    "": 143,
+    "letter": "a",
+    "numbercode": 72,
+    "image": "072a.jpg"
+  },
+  {
+    "": 145,
+    "letter": "a",
+    "numbercode": 73,
+    "image": "073a.jpg"
+  },
+  {
+    "": 147,
+    "letter": "a",
+    "numbercode": 74,
+    "image": "074a.jpg"
+  },
+  {
+    "": 149,
+    "letter": "a",
+    "numbercode": 75,
+    "image": "075a.jpg"
+  },
+  {
+    "": 151,
+    "letter": "a",
+    "numbercode": 76,
+    "image": "076a.jpg"
+  },
+  {
+    "": 153,
+    "letter": "a",
+    "numbercode": 77,
+    "image": "077a.jpg"
+  },
+  {
+    "": 155,
+    "letter": "a",
+    "numbercode": 78,
+    "image": "078a.jpg"
+  },
+  {
+    "": 157,
+    "letter": "a",
+    "numbercode": 79,
+    "image": "079a.jpg"
+  },
+  {
+    "": 159,
+    "letter": "a",
+    "numbercode": 80,
+    "image": "080a.jpg"
+  },
+  {
+    "": 161,
+    "letter": "a",
+    "numbercode": 81,
+    "image": "081a.jpg"
+  },
+  {
+    "": 163,
+    "letter": "a",
+    "numbercode": 82,
+    "image": "082a.jpg"
+  },
+  {
+    "": 165,
+    "letter": "a",
+    "numbercode": 83,
+    "image": "083a.jpg"
+  },
+  {
+    "": 167,
+    "letter": "a",
+    "numbercode": 84,
+    "image": "084a.jpg"
+  },
+  {
+    "": 169,
+    "letter": "a",
+    "numbercode": 85,
+    "image": "085a.jpg"
+  },
+  {
+    "": 171,
+    "letter": "a",
+    "numbercode": 86,
+    "image": "086a.jpg"
+  },
+  {
+    "": 173,
+    "letter": "a",
+    "numbercode": 87,
+    "image": "087a.jpg"
+  },
+  {
+    "": 175,
+    "letter": "a",
+    "numbercode": 88,
+    "image": "088a.jpg"
+  },
+  {
+    "": 177,
+    "letter": "a",
+    "numbercode": 89,
+    "image": "089a.jpg"
+  },
+  {
+    "": 179,
+    "letter": "a",
+    "numbercode": 90,
+    "image": "090a.jpg"
+  },
+  {
+    "": 181,
+    "letter": "a",
+    "numbercode": 91,
+    "image": "091a.jpg"
+  },
+  {
+    "": 183,
+    "letter": "a",
+    "numbercode": 92,
+    "image": "092a.jpg"
+  },
+  {
+    "": 185,
+    "letter": "a",
+    "numbercode": 93,
+    "image": "093a.jpg"
+  },
+  {
+    "": 187,
+    "letter": "a",
+    "numbercode": 94,
+    "image": "094a.jpg"
+  },
+  {
+    "": 189,
+    "letter": "a",
+    "numbercode": 95,
+    "image": "095a.jpg"
+  },
+  {
+    "": 191,
+    "letter": "a",
+    "numbercode": 96,
+    "image": "096a.jpg"
+  },
+  {
+    "": 193,
+    "letter": "a",
+    "numbercode": 97,
+    "image": "097a.jpg"
+  },
+  {
+    "": 195,
+    "letter": "a",
+    "numbercode": 98,
+    "image": "098a.jpg"
+  },
+  {
+    "": 197,
+    "letter": "a",
+    "numbercode": 99,
+    "image": "099a.jpg"
+  },
+  {
+    "": 199,
+    "letter": "a",
+    "numbercode": 100,
+    "image": "100a.jpg"
+  },
+  {
+    "": 201,
+    "letter": "a",
+    "numbercode": 101,
+    "image": "101a.jpg"
+  },
+  {
+    "": 203,
+    "letter": "a",
+    "numbercode": 102,
+    "image": "102a.jpg"
+  },
+  {
+    "": 205,
+    "letter": "a",
+    "numbercode": 103,
+    "image": "103a.jpg"
+  },
+  {
+    "": 207,
+    "letter": "a",
+    "numbercode": 104,
+    "image": "104a.jpg"
+  },
+  {
+    "": 209,
+    "letter": "a",
+    "numbercode": 105,
+    "image": "105a.jpg"
+  },
+  {
+    "": 211,
+    "letter": "a",
+    "numbercode": 106,
+    "image": "106a.jpg"
+  },
+  {
+    "": 213,
+    "letter": "a",
+    "numbercode": 107,
+    "image": "107a.jpg"
+  },
+  {
+    "": 215,
+    "letter": "a",
+    "numbercode": 108,
+    "image": "108a.jpg"
+  },
+  {
+    "": 217,
+    "letter": "a",
+    "numbercode": 109,
+    "image": "109a.jpg"
+  },
+  {
+    "": 219,
+    "letter": "a",
+    "numbercode": 110,
+    "image": "110a.jpg"
+  },
+  {
+    "": 221,
+    "letter": "a",
+    "numbercode": 111,
+    "image": "111a.jpg"
+  },
+  {
+    "": 223,
+    "letter": "a",
+    "numbercode": 112,
+    "image": "112a.jpg"
+  },
+  {
+    "": 225,
+    "letter": "a",
+    "numbercode": 113,
+    "image": "113a.jpg"
+  },
+  {
+    "": 227,
+    "letter": "a",
+    "numbercode": 114,
+    "image": "114a.jpg"
+  },
+  {
+    "": 229,
+    "letter": "a",
+    "numbercode": 115,
+    "image": "115a.jpg"
+  },
+  {
+    "": 231,
+    "letter": "a",
+    "numbercode": 116,
+    "image": "116a.jpg"
+  },
+  {
+    "": 233,
+    "letter": "a",
+    "numbercode": 117,
+    "image": "117a.jpg"
+  },
+  {
+    "": 235,
+    "letter": "a",
+    "numbercode": 118,
+    "image": "118a.jpg"
+  },
+  {
+    "": 237,
+    "letter": "a",
+    "numbercode": 119,
+    "image": "119a.jpg"
+  },
+  {
+    "": 239,
+    "letter": "a",
+    "numbercode": 120,
+    "image": "120a.jpg"
+  },
+  {
+    "": 241,
+    "letter": "a",
+    "numbercode": 121,
+    "image": "121a.jpg"
+  },
+  {
+    "": 243,
+    "letter": "a",
+    "numbercode": 122,
+    "image": "122a.jpg"
+  },
+  {
+    "": 245,
+    "letter": "a",
+    "numbercode": 123,
+    "image": "123a.jpg"
+  },
+  {
+    "": 247,
+    "letter": "a",
+    "numbercode": 124,
+    "image": "124a.jpg"
+  },
+  {
+    "": 249,
+    "letter": "a",
+    "numbercode": 125,
+    "image": "125a.jpg"
+  },
+  {
+    "": 251,
+    "letter": "a",
+    "numbercode": 126,
+    "image": "126a.jpg"
+  },
+  {
+    "": 253,
+    "letter": "a",
+    "numbercode": 127,
+    "image": "127a.jpg"
+  },
+  {
+    "": 255,
+    "letter": "a",
+    "numbercode": 128,
+    "image": "128a.jpg"
+  },
+  {
+    "": 12,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check1.jpg"
+  },
+  {
+    "": 2,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check2.jpg"
+  },
+  {
+    "": 32,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check3.jpg"
+  },
+  {
+    "": 4,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check4.jpg"
+  },
+  {
+    "": 52,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check5.jpg"
+  },
+  {
+    "": 6,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check1.jpg"
+  },
+  {
+    "": 72,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check2.jpg"
+  },
+  {
+    "": 8,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check3.jpg"
+  },
+  {
+    "": 92,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check4.jpg"
+  },
+  {
+    "": 10,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "Check5.jpg"
+  }
+]
+
+       var Encode_procedure = {
+           timeline:[Encode_Image],
+           timeline_variables: encode_variables,
+           randomize_order: true
+         }
+
+        timeline.push(Encode_procedure)
+        
+        
+        var Test_Instructions = {
+         type: 'html-button-response',
+         stimulus: '<p> Thank you! For this next part, we are going to test your memory for the images you just judged as indoor/ outdoor by showing you those "old" images again in addition to similar images and totally new images</p>',
+         choices: ['Press to Continue to Video Instructions']
+        } 
+        
+        timeline.push(Test_Instructions)
+        
+        var Test_Video = {
+          type: 'video-keyboard-response',
+          sources: ['MS_Objs_ONS_TestInstructs.mov'],
+          autoplay: true,
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+        }
+        
+        timeline.push(Test_Video)
+        
+           var Test_Instructions_After = {
+         type: 'html-button-response',
+         stimulus: '<p> For this version, you will see the image and immediately after press a button with your mouse saying if you thought the image was Old (the exact image you saw in the indoor/outdoor task), New (not seen in the indoor/outdoor task), or Similar (similar to but not the same as an image you saw in the indoor/outdoor task). You will only have 5 seconds to respond so it is important to be quick and accurate. There will also be attention checks asking you to click particular buttons. </p>',
+         choices: ['Press  Continue to Start Your Test']
+        } 
+        
+        timeline.push(Test_Instructions_After)
+        
+        var Test_Image = {
+          type: 'image-keyboard-response',
+          stimulus: jsPsych.timelineVariable('image'),
+          trial_duration: 2000,
+          choices: jsPsych.NO_KEYS,
+          response_ends_trial: false
+        }
+        
+           var test_variables = [
+  {
+    "": 1,
+    "letter": "a",
+    "numbercode": 1,
+    "image": "001a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 3,
+    "letter": "a",
+    "numbercode": 2,
+    "image": "002a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 5,
+    "letter": "a",
+    "numbercode": 3,
+    "image": "003a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 7,
+    "letter": "a",
+    "numbercode": 4,
+    "image": "004a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 9,
+    "letter": "a",
+    "numbercode": 5,
+    "image": "005a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 11,
+    "letter": "a",
+    "numbercode": 6,
+    "image": "006a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 13,
+    "letter": "a",
+    "numbercode": 7,
+    "image": "007a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 15,
+    "letter": "a",
+    "numbercode": 8,
+    "image": "008a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 17,
+    "letter": "a",
+    "numbercode": 9,
+    "image": "009a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 19,
+    "letter": "a",
+    "numbercode": 10,
+    "image": "010a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 21,
+    "letter": "a",
+    "numbercode": 11,
+    "image": "011a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 23,
+    "letter": "a",
+    "numbercode": 12,
+    "image": "012a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 25,
+    "letter": "a",
+    "numbercode": 13,
+    "image": "013a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 27,
+    "letter": "a",
+    "numbercode": 14,
+    "image": "014a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 29,
+    "letter": "a",
+    "numbercode": 15,
+    "image": "015a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 31,
+    "letter": "a",
+    "numbercode": 16,
+    "image": "016a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 33,
+    "letter": "a",
+    "numbercode": 17,
+    "image": "017a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 35,
+    "letter": "a",
+    "numbercode": 18,
+    "image": "018a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 37,
+    "letter": "a",
+    "numbercode": 19,
+    "image": "019a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 39,
+    "letter": "a",
+    "numbercode": 20,
+    "image": "020a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 41,
+    "letter": "a",
+    "numbercode": 21,
+    "image": "021a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 43,
+    "letter": "a",
+    "numbercode": 22,
+    "image": "022a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 45,
+    "letter": "a",
+    "numbercode": 23,
+    "image": "023a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 47,
+    "letter": "a",
+    "numbercode": 24,
+    "image": "024a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 49,
+    "letter": "a",
+    "numbercode": 25,
+    "image": "025a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 51,
+    "letter": "a",
+    "numbercode": 26,
+    "image": "026a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 53,
+    "letter": "a",
+    "numbercode": 27,
+    "image": "027a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 55,
+    "letter": "a",
+    "numbercode": 28,
+    "image": "028a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 57,
+    "letter": "a",
+    "numbercode": 29,
+    "image": "029a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 59,
+    "letter": "a",
+    "numbercode": 30,
+    "image": "030a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 61,
+    "letter": "a",
+    "numbercode": 31,
+    "image": "031a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 63,
+    "letter": "a",
+    "numbercode": 32,
+    "image": "032a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 65,
+    "letter": "a",
+    "numbercode": 33,
+    "image": "033a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 67,
+    "letter": "a",
+    "numbercode": 34,
+    "image": "034a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 69,
+    "letter": "a",
+    "numbercode": 35,
+    "image": "035a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 71,
+    "letter": "a",
+    "numbercode": 36,
+    "image": "036a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 73,
+    "letter": "a",
+    "numbercode": 37,
+    "image": "037a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 75,
+    "letter": "a",
+    "numbercode": 38,
+    "image": "038a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 77,
+    "letter": "a",
+    "numbercode": 39,
+    "image": "039a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 79,
+    "letter": "a",
+    "numbercode": 40,
+    "image": "040a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 81,
+    "letter": "a",
+    "numbercode": 41,
+    "image": "041a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 83,
+    "letter": "a",
+    "numbercode": 42,
+    "image": "042a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 85,
+    "letter": "a",
+    "numbercode": 43,
+    "image": "043a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 87,
+    "letter": "a",
+    "numbercode": 44,
+    "image": "044a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 89,
+    "letter": "a",
+    "numbercode": 45,
+    "image": "045a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 91,
+    "letter": "a",
+    "numbercode": 46,
+    "image": "046a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 93,
+    "letter": "a",
+    "numbercode": 47,
+    "image": "047a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 95,
+    "letter": "a",
+    "numbercode": 48,
+    "image": "048a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 97,
+    "letter": "a",
+    "numbercode": 49,
+    "image": "049a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 99,
+    "letter": "a",
+    "numbercode": 50,
+    "image": "050a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 101,
+    "letter": "a",
+    "numbercode": 51,
+    "image": "051a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 103,
+    "letter": "a",
+    "numbercode": 52,
+    "image": "052a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 105,
+    "letter": "a",
+    "numbercode": 53,
+    "image": "053a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 107,
+    "letter": "a",
+    "numbercode": 54,
+    "image": "054a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 109,
+    "letter": "a",
+    "numbercode": 55,
+    "image": "055a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 111,
+    "letter": "a",
+    "numbercode": 56,
+    "image": "056a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 113,
+    "letter": "a",
+    "numbercode": 57,
+    "image": "057a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 115,
+    "letter": "a",
+    "numbercode": 58,
+    "image": "058a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 117,
+    "letter": "a",
+    "numbercode": 59,
+    "image": "059a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 119,
+    "letter": "a",
+    "numbercode": 60,
+    "image": "060a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 121,
+    "letter": "a",
+    "numbercode": 61,
+    "image": "061a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 123,
+    "letter": "a",
+    "numbercode": 62,
+    "image": "062a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 125,
+    "letter": "a",
+    "numbercode": 63,
+    "image": "063a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 127,
+    "letter": "a",
+    "numbercode": 64,
+    "image": "064a.jpg",
+    "correct": "Old"
+  },
+  {
+    "": 257,
+    "letter": "a",
+    "numbercode": 129,
+    "image": "129a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 259,
+    "letter": "a",
+    "numbercode": 130,
+    "image": "130a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 261,
+    "letter": "a",
+    "numbercode": 131,
+    "image": "131a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 263,
+    "letter": "a",
+    "numbercode": 132,
+    "image": "132a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 265,
+    "letter": "a",
+    "numbercode": 133,
+    "image": "133a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 267,
+    "letter": "a",
+    "numbercode": 134,
+    "image": "134a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 269,
+    "letter": "a",
+    "numbercode": 135,
+    "image": "135a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 271,
+    "letter": "a",
+    "numbercode": 136,
+    "image": "136a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 273,
+    "letter": "a",
+    "numbercode": 137,
+    "image": "137a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 275,
+    "letter": "a",
+    "numbercode": 138,
+    "image": "138a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 277,
+    "letter": "a",
+    "numbercode": 139,
+    "image": "139a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 279,
+    "letter": "a",
+    "numbercode": 140,
+    "image": "140a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 281,
+    "letter": "a",
+    "numbercode": 141,
+    "image": "141a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 283,
+    "letter": "a",
+    "numbercode": 142,
+    "image": "142a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 285,
+    "letter": "a",
+    "numbercode": 143,
+    "image": "143a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 287,
+    "letter": "a",
+    "numbercode": 144,
+    "image": "144a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 289,
+    "letter": "a",
+    "numbercode": 145,
+    "image": "145a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 291,
+    "letter": "a",
+    "numbercode": 146,
+    "image": "146a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 293,
+    "letter": "a",
+    "numbercode": 147,
+    "image": "147a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 295,
+    "letter": "a",
+    "numbercode": 148,
+    "image": "148a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 297,
+    "letter": "a",
+    "numbercode": 149,
+    "image": "149a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 299,
+    "letter": "a",
+    "numbercode": 150,
+    "image": "150a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 301,
+    "letter": "a",
+    "numbercode": 151,
+    "image": "151a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 303,
+    "letter": "a",
+    "numbercode": 152,
+    "image": "152a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 305,
+    "letter": "a",
+    "numbercode": 153,
+    "image": "153a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 307,
+    "letter": "a",
+    "numbercode": 154,
+    "image": "154a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 309,
+    "letter": "a",
+    "numbercode": 155,
+    "image": "155a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 311,
+    "letter": "a",
+    "numbercode": 156,
+    "image": "156a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 313,
+    "letter": "a",
+    "numbercode": 157,
+    "image": "157a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 315,
+    "letter": "a",
+    "numbercode": 158,
+    "image": "158a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 317,
+    "letter": "a",
+    "numbercode": 159,
+    "image": "159a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 319,
+    "letter": "a",
+    "numbercode": 160,
+    "image": "160a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 321,
+    "letter": "a",
+    "numbercode": 161,
+    "image": "161a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 323,
+    "letter": "a",
+    "numbercode": 162,
+    "image": "162a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 325,
+    "letter": "a",
+    "numbercode": 163,
+    "image": "163a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 327,
+    "letter": "a",
+    "numbercode": 164,
+    "image": "164a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 329,
+    "letter": "a",
+    "numbercode": 165,
+    "image": "165a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 331,
+    "letter": "a",
+    "numbercode": 166,
+    "image": "166a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 333,
+    "letter": "a",
+    "numbercode": 167,
+    "image": "167a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 335,
+    "letter": "a",
+    "numbercode": 168,
+    "image": "168a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 337,
+    "letter": "a",
+    "numbercode": 169,
+    "image": "169a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 339,
+    "letter": "a",
+    "numbercode": 170,
+    "image": "170a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 341,
+    "letter": "a",
+    "numbercode": 171,
+    "image": "171a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 343,
+    "letter": "a",
+    "numbercode": 172,
+    "image": "172a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 345,
+    "letter": "a",
+    "numbercode": 173,
+    "image": "173a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 347,
+    "letter": "a",
+    "numbercode": 174,
+    "image": "174a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 349,
+    "letter": "a",
+    "numbercode": 175,
+    "image": "175a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 351,
+    "letter": "a",
+    "numbercode": 176,
+    "image": "176a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 353,
+    "letter": "a",
+    "numbercode": 177,
+    "image": "177a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 355,
+    "letter": "a",
+    "numbercode": 178,
+    "image": "178a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 357,
+    "letter": "a",
+    "numbercode": 179,
+    "image": "179a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 359,
+    "letter": "a",
+    "numbercode": 180,
+    "image": "180a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 361,
+    "letter": "a",
+    "numbercode": 181,
+    "image": "181a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 363,
+    "letter": "a",
+    "numbercode": 182,
+    "image": "182a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 365,
+    "letter": "a",
+    "numbercode": 183,
+    "image": "183a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 367,
+    "letter": "a",
+    "numbercode": 184,
+    "image": "184a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 369,
+    "letter": "a",
+    "numbercode": 185,
+    "image": "185a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 371,
+    "letter": "a",
+    "numbercode": 186,
+    "image": "186a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 373,
+    "letter": "a",
+    "numbercode": 187,
+    "image": "187a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 375,
+    "letter": "a",
+    "numbercode": 188,
+    "image": "188a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 377,
+    "letter": "a",
+    "numbercode": 189,
+    "image": "189a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 379,
+    "letter": "a",
+    "numbercode": 190,
+    "image": "190a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 381,
+    "letter": "a",
+    "numbercode": 191,
+    "image": "191a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 383,
+    "letter": "a",
+    "numbercode": 192,
+    "image": "192a.jpg",
+    "correct": "New"
+  },
+  {
+    "": 130,
+    "letter": "b",
+    "numbercode": 65,
+    "image": "065b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 132,
+    "letter": "b",
+    "numbercode": 66,
+    "image": "066b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 134,
+    "letter": "b",
+    "numbercode": 67,
+    "image": "067b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 136,
+    "letter": "b",
+    "numbercode": 68,
+    "image": "068b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 138,
+    "letter": "b",
+    "numbercode": 69,
+    "image": "069b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 140,
+    "letter": "b",
+    "numbercode": 70,
+    "image": "070b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 142,
+    "letter": "b",
+    "numbercode": 71,
+    "image": "071b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 144,
+    "letter": "b",
+    "numbercode": 72,
+    "image": "072b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 146,
+    "letter": "b",
+    "numbercode": 73,
+    "image": "073b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 148,
+    "letter": "b",
+    "numbercode": 74,
+    "image": "074b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 150,
+    "letter": "b",
+    "numbercode": 75,
+    "image": "075b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 152,
+    "letter": "b",
+    "numbercode": 76,
+    "image": "076b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 154,
+    "letter": "b",
+    "numbercode": 77,
+    "image": "077b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 156,
+    "letter": "b",
+    "numbercode": 78,
+    "image": "078b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 158,
+    "letter": "b",
+    "numbercode": 79,
+    "image": "079b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 160,
+    "letter": "b",
+    "numbercode": 80,
+    "image": "080b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 162,
+    "letter": "b",
+    "numbercode": 81,
+    "image": "081b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 164,
+    "letter": "b",
+    "numbercode": 82,
+    "image": "082b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 166,
+    "letter": "b",
+    "numbercode": 83,
+    "image": "083b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 168,
+    "letter": "b",
+    "numbercode": 84,
+    "image": "084b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 170,
+    "letter": "b",
+    "numbercode": 85,
+    "image": "085b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 172,
+    "letter": "b",
+    "numbercode": 86,
+    "image": "086b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 174,
+    "letter": "b",
+    "numbercode": 87,
+    "image": "087b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 176,
+    "letter": "b",
+    "numbercode": 88,
+    "image": "088b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 178,
+    "letter": "b",
+    "numbercode": 89,
+    "image": "089b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 180,
+    "letter": "b",
+    "numbercode": 90,
+    "image": "090b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 182,
+    "letter": "b",
+    "numbercode": 91,
+    "image": "091b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 184,
+    "letter": "b",
+    "numbercode": 92,
+    "image": "092b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 186,
+    "letter": "b",
+    "numbercode": 93,
+    "image": "093b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 188,
+    "letter": "b",
+    "numbercode": 94,
+    "image": "094b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 190,
+    "letter": "b",
+    "numbercode": 95,
+    "image": "095b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 192,
+    "letter": "b",
+    "numbercode": 96,
+    "image": "096b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 194,
+    "letter": "b",
+    "numbercode": 97,
+    "image": "097b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 196,
+    "letter": "b",
+    "numbercode": 98,
+    "image": "098b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 198,
+    "letter": "b",
+    "numbercode": 99,
+    "image": "099b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 200,
+    "letter": "b",
+    "numbercode": 100,
+    "image": "100b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 202,
+    "letter": "b",
+    "numbercode": 101,
+    "image": "101b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 204,
+    "letter": "b",
+    "numbercode": 102,
+    "image": "102b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 206,
+    "letter": "b",
+    "numbercode": 103,
+    "image": "103b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 208,
+    "letter": "b",
+    "numbercode": 104,
+    "image": "104b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 210,
+    "letter": "b",
+    "numbercode": 105,
+    "image": "105b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 212,
+    "letter": "b",
+    "numbercode": 106,
+    "image": "106b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 214,
+    "letter": "b",
+    "numbercode": 107,
+    "image": "107b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 216,
+    "letter": "b",
+    "numbercode": 108,
+    "image": "108b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 218,
+    "letter": "b",
+    "numbercode": 109,
+    "image": "109b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 220,
+    "letter": "b",
+    "numbercode": 110,
+    "image": "110b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 222,
+    "letter": "b",
+    "numbercode": 111,
+    "image": "111b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 224,
+    "letter": "b",
+    "numbercode": 112,
+    "image": "112b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 226,
+    "letter": "b",
+    "numbercode": 113,
+    "image": "113b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 228,
+    "letter": "b",
+    "numbercode": 114,
+    "image": "114b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 230,
+    "letter": "b",
+    "numbercode": 115,
+    "image": "115b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 232,
+    "letter": "b",
+    "numbercode": 116,
+    "image": "116b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 234,
+    "letter": "b",
+    "numbercode": 117,
+    "image": "117b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 236,
+    "letter": "b",
+    "numbercode": 118,
+    "image": "118b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 238,
+    "letter": "b",
+    "numbercode": 119,
+    "image": "119b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 240,
+    "letter": "b",
+    "numbercode": 120,
+    "image": "120b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 242,
+    "letter": "b",
+    "numbercode": 121,
+    "image": "121b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 244,
+    "letter": "b",
+    "numbercode": 122,
+    "image": "122b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 246,
+    "letter": "b",
+    "numbercode": 123,
+    "image": "123b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 248,
+    "letter": "b",
+    "numbercode": 124,
+    "image": "124b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 250,
+    "letter": "b",
+    "numbercode": 125,
+    "image": "125b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 252,
+    "letter": "b",
+    "numbercode": 126,
+    "image": "126b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 254,
+    "letter": "b",
+    "numbercode": 127,
+    "image": "127b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 256,
+    "letter": "b",
+    "numbercode": 128,
+    "image": "128b.jpg",
+    "correct": "Similar"
+  },
+  {
+    "": 14,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckOld1.jpg",
+    "correct": 0
+  },
+  {
+    "": 2,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckNew1.jpg",
+    "correct": 2
+  },
+  {
+    "": 32,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckSimilar1.jpg",
+    "correct": 1
+  },
+  {
+    "": 4,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckOld1.jpg",
+    "correct": 0
+  },
+  {
+    "": 52,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckNew1.jpg",
+    "correct": 2
+  },
+  {
+    "": 6,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckSimilar1.jpg",
+    "correct": 1
+  },
+  {
+    "": 72,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckOld1.jpg",
+    "correct": 0
+  },
+  {
+    "": 8,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckNew1.jpg",
+    "correct": 2
+  },
+  {
+    "": 92,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckSimilar1.jpg",
+    "correct": 1
+  },
+  {
+    "": 10,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckOld1.jpg",
+    "correct": 0
+  },
+  {
+    "": 112,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckNew1.jpg",
+    "correct": 2
+  },
+  {
+    "": 12,
+    "letter": "c",
+    "numbercode": 0,
+    "image": "AttCheckSimilar1.jpg",
+    "correct": 1
+  }
+]
+  
+          
+          
+        var Test_Response = {
+          type: 'html-button-response',
+          stimulus: '<p> Please Respond <p>',
+          trial_duration: 5000,
+          choices:['Old','Similar','New'],
+          response_ends_trial: true,
+          data : { correct: jsPsych.timelineVariable('correct')}
+        }
+        
+        
+        var Test_procedure = {
+           timeline:[Test_Image,Test_Response],
+           timeline_variables: test_variables,
+           randomize_order: true
+         }  
+        
+        
+        timeline.push(Test_procedure)
+        
+        var videos =['MS_Objs_ONS_TestInstructs','MS_Objs_ONS_Continuous.mp4'];
+        
+        var Debrief = {
+          type: 'html-keyboard-response',
+          stimulus: '<p><a href = "https://app.prolific.co/submissions/complete?cc=85F14997">Click here to return to Prolific and complete the study.</a></p>',
+         choices: jsPsych.NO_KEYS
+         }
+         
+         timeline.push(Debrief)
+        
+         jsPsych.init({
+            timeline: timeline,
+              exclusions: {
+              min_width: 800,
+              min_height: 600
+              },
+            preload_videos: videos
+            })
