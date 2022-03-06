@@ -12,7 +12,7 @@ Performance on The Mnemonic Similarity Task (MST) has been shown to be sensitive
 
 The Mnemonic Similarity task (MST) is a widely used task in the study of cognitive aging and neuroscience. In this task participants are asked to differentiate between previously seen images from novel images with a subset of these novel images sharing a high degree of similarity with previously seen images. Those images that share a high level of similarity with previously seen images create a high level of memory interference and this discrimination process is thought to tax pattern separation processes within the Dentate Gyrus, and more broadly across the Temporal lobe.
 
-Healthy cognitive aging has a selective impact on task performance in the MST. Age specifically reduces the Lure Discrimination Index (LDI), a measure of the ability to discriminate these Similar novel images (termed Lures) from those images they had previously seen. The LDI is taken as an indirect index of pattern separation. This is in line with neural work showing age lessens perforant path input to the Dentate gyrus as well as to hyperactivity in the CA3 in more cognitively impaired older adults. LDI has been shown to relate to both structural and functional integrity within this network() Age, however has little or no impact on the Recognition index (REC) in the task, a measure of being able to differentiate new, dissimilar objects from the images they had seen before(Stark and Stark 2017; Webb et al. 2020).  The LDI has also been shown to be sensitive in discriminating healthy cognitive aging from amnestic Mild Cognitive Impairment (aMCI), a condition with high risk for Alzheimer's Disease. These findings have been found to hold over a variety of task variations and conditions showing that this effect is robust.
+Healthy cognitive aging has a selective impact on task performance in the MST. Age specifically reduces the Lure Discrimination Index (LDI), a measure of the ability to discriminate these Similar novel images (termed Lures) from those images they had previously seen. The LDI is taken as an indirect index of pattern separation. This is in line with neural work showing age lessens perforant path input to the Dentate gyrus as well as to hyperactivity in the CA3 in more cognitively impaired older adults. LDI has been shown to relate to both structural and functional integrity within this network() Age, however has little or no impact on the Recognition index (REC) in the task, a measure of being able to differentiate new, dissimilar objects from the images they had seen before(Stark and Stark 2017; Webb et al. 2020).Â  The LDI has also been shown to be sensitive in discriminating healthy cognitive aging from amnestic Mild Cognitive Impairment (aMCI), a condition with high risk for Alzheimer's Disease. These findings have been found to hold over a variety of task variations and conditions showing that this effect is robust.
 
 Given the importance of these findings, it should come as no surprise the MST has become widely used across labs. However, we have found no publications of the MST being used in an online setting. Online behavioral testing provides several benefits, including access to larger samples, access to atypical samples for psychology, less of a burden on both the experimenters and participants in terms of scheduling and coordinating experimental sessions, and finally safety when it comes to a situation like the COVID-19 pandemic().
 
@@ -24,7 +24,7 @@ The goal of the current pilot study was to design an online variant of the MST t
 
 ### Participants
 
-We recruited 100 YA between the ages of 18-30 and 100 OA participants between the age of 60-80. Of these, 84 younger adults(Age: M=23.7, SD=3.77) and 77 older adults  (Age: M=65.7,SD=4.96)passed attention-check criteria and were included for further analysis. The YA group consisted of 46 women, 36 men, 1 non-binary person, and one person not identifying. The OA  77 OA consisted of 42 women, 32 men, and 3 people not identifying.
+We recruited 100 YA between the ages of 18-30 and 100 OA participants between the age of 60-80. Of these, 84 younger adults(Age: M=23.7, SD=3.77) and 77 older adultsÂ  (Age: M=65.7,SD=4.96)passed attention-check criteria and were included for further analysis. The YA group consisted of 46 women, 36 men, 1 non-binary person, and one person not identifying. The OAÂ  77 OA consisted of 42 women, 32 men, and 3 people not identifying.
 
 In both groups, the majority of participants identified as White (OA=68, YA=50), while qualitatively it appears the younger adult sample was more racially and ethnically diverse than the older adult sample. In the OA group, 4 people identified as Black, 1 as Indigenous, 2 as Middle Eastern, and 1 did not identify. 2 of the OA participants also identified as Hispanic and/or Latinx. In the YA group, 18 people identified as Asian, 9 as Black or, and 8 as Middle Eastern. 14 of the YA participants also identified as Hispanic and/or Latinx.
 
@@ -44,9 +44,9 @@ The Test Phase consisted of 192 test trials with 12 attention-checks trials, tot
 
 Images were taken from the Mnemonic Similarity Task Repository available at (). We used Set 1 from the freely available set of normed images with the images used for the Attention Check images taken from Sets 2 & 3 from the repository. The Task itself was written in jsPsych and hosted on Cognition.run. All analyses for the study were conducted in R.
 
-![](MST/MSTPilot/MSTExample.jpg)
+![MSTExample](https://user-images.githubusercontent.com/7660406/156936305-a5967492-b8f0-4f95-968a-111298680d55.jpg)
+![MSTExample2](https://user-images.githubusercontent.com/7660406/156936315-ad785adc-1ca3-49e0-9d0b-0cfca7142a30.JPG)
 
-![](MST/MSTPilot/MSTExample2.JPG)
 
 ![Figure 1a. The Mnemonic Similarity Task : Example stimuli during the Incidental Encoding Phase and a corresponding image in the Test Phase representing the three possible Test conditions. Note that these are toy examples and not actually used in the experiment.Figure 1b: Examples of images for each of the lure bins, ranging from the most similar (lure bin 1) to least similar (lure bin 5). Note that these are toy examples and have not actually been normed with the exception of the image of the rubber ducky.](MSTExample2.JPG)
 
@@ -66,7 +66,8 @@ Taken together the goal of the current study is to replicate lab-based age-relat
 
 ### Accuracy and Response Times Across Age Groups
 
-![](MST/MSTPilot/figs/Fig1.png)
+
+![Fig1](https://user-images.githubusercontent.com/7660406/156936344-0218e009-0dc2-4f89-9c01-dcc550c9c692.png)
 
 To first gain a baseline understanding of the task, we looked at Overall accuracy and response times. Performance was above chance in both age groups, with both younger and older adults correctly identifying new and old stimuli XXX% of the time, and similar XX% of the time. Importantly, we did have a subset of older and younger adults who performed below chance (33%) and have included an analysis showing that exclusion of these participants does not affect the outcomes of the analyses (see Supplementary Analyses)
 
@@ -76,7 +77,8 @@ To understand if stimulus type ("New","Similar","Old") and Age Group impacted re
 
 ### LDI and REC
 
-### ![](MST/MSTPilot/figs/Fig2.png)
+![Fig2](https://user-images.githubusercontent.com/7660406/156936365-73f85100-3864-402e-9b22-004fb2b10d1a.png)
+
 
 To examine the impact of Age Group on the Recognition Index score, we conducted a Two-Samples T-Test and found that the two age groups did not differ in their Recognition Index (p=.77).
 
@@ -86,7 +88,8 @@ Importantly, all of these effects survive even when we exclude participant whose
 
 ### Lure Discrimination Across Levels of Similarity
 
-![](MST/MSTPilot/figs/AccuracyByBins.png)
+
+![AccuracyByBins](https://user-images.githubusercontent.com/7660406/156936393-7b74150f-bd98-45f4-8a94-18fb00423aa7.png)
 
 To determine if we could replicate difficulty-based accuracy on "Similar" trials, we broke down Similar stimuli trials by their Lure Bin (with Bin 1 being the most similar and Bin 5 being the least Similar) The level of similarity being between Encoding Images and their Similar Lures in the Test Phase, with the greater the similarity being the most difficult. We conducted a mixed-effects ANOVA with Group as a between-subjects factor and lure bin as a within-subjects factor. We found a main effect of Age Group with OA being less accurate overall (obvious given the LDI result). We also found a main effect of Lure Bin with less similar bins having a an overall higher level of accuracy, F(4,551)=193.60, p\<.001. Consistent with previous findings, we found no interaction between Age Group and Lure Bin (p=.697)
 
