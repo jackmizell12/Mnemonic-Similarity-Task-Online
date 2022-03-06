@@ -1,25 +1,18 @@
----
-oooolp---
-title: ' Replication of Age Effects in the Mnemonic Similarity Task in an Online Sample:
-  A Pilot Study'
-author: "Jack-Morgan Mizell"
-date: "9/6/2020"
-output:
-  word_document: default
-  html_document: default
-bibliography: Pilot/MnemonicSimilarityTask.bib
-abstract: Performance on The Mnemonic Similarity Task (MST) has been shown to be sensitive to age-related changes in hippocampal function. The traditional MST has participants see a set of images during an encoding phase and then test their memory for these images in a test phase where participants must judge whether the images they are seeing are repetitions of previous images, similar images to those they saw, or completely new images. Age-related changes have been shown to relate to the ability to discriminate similar images (Lures) from previously seen images. This sensitivity has led to widespread use of the task, and several of its variants to probe age-related changes within the temporal lobes. However, whether these effects replicate in an online setting are currently unknown. In this study we used an online version of the original MST Objects version (MST-O)  on an online sample of Older and Younger adults. Using this paradigm, we replicate previously reported age effects in the online setting. Specifically,  and in line with lab-based studies, we see age-dependent effect on lure discrimination, while finding no such age effect on recognition abilities.. Additionally, we were able to replicate a similarity-dependent effect on Lure Discrimination, where the more similar a Lure is to its original image, the less likely it is to be correctly identified,regardless of age group. Our online version of the MST-O   captures similar behavior, and age-related differences  to the lab-based experiment which opens up the potential for using the MST on larger and more diverse samples than are typically possible in lab-based experiments"
----
+# Replication of Age Effects in the Mnemonic Similarity Task in an Online Sample
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+This project was completed for my PhD in Psychology at the University of Arizona. I handled experimental design, data collection, analysis, and drafting of the manuscript. This project was conducted under the mentorship of Dr. Robert C. Wilson in the Neuroscience of Reinforcement Learning and Decision Making Lab at the University of Arizona.
+
+The task itself was designed in Javascript using JSPsych and hosted on Cognition.Run. The host requires a particular structure to their code so this file will not run on a desktop, but will if the files are uploaded to Cognition.run
+
+## Project Summary
+
+Performance on The Mnemonic Similarity Task (MST) has been shown to be sensitive to age-related changes in hippocampal function. The traditional MST has participants see a set of images during an encoding phase and then test their memory for these images in a test phase where participants must judge whether the images they are seeing are repetitions of previous images, similar images to those they saw, or completely new images. Age-related changes have been shown to relate to the ability to discriminate similar images (Lures) from previously seen images. This sensitivity has led to widespread use of the task, and several of its variants to probe age-related changes within the temporal lobes. However, whether these effects replicate in an online setting are currently unknown. In this study we used an online version of the original MST Objects version (MST-O) on an online sample of Older and Younger adults. Using this paradigm, we replicate previously reported age effects in the online setting. Specifically, and in line with lab-based studies, we see age-dependent effect on lure discrimination, while finding no such age effect on recognition abilities.. Additionally, we were able to replicate a similarity-dependent effect on Lure Discrimination, where the more similar a Lure is to its original image, the less likely it is to be correctly identified,regardless of age group. Our online version of the MST-O captures similar behavior, and age-related differences to the lab-based experiment which opens up the potential for using the MST on larger and more diverse samples than are typically possible in lab-based
 
 ## Introduction
 
 The Mnemonic Similarity task (MST) is a widely used task in the study of cognitive aging and neuroscience. In this task participants are asked to differentiate between previously seen images from novel images with a subset of these novel images sharing a high degree of similarity with previously seen images. Those images that share a high level of similarity with previously seen images create a high level of memory interference and this discrimination process is thought to tax pattern separation processes within the Dentate Gyrus, and more broadly across the Temporal lobe.
 
-Healthy cognitive aging has a selective impact on task performance in the MST. Age specifically reduces the Lure Discrimination Index (LDI), a measure of the ability to discriminate these Similar novel images (termed Lures) from those images they had previously seen. The LDI is taken as an indirect index of pattern separation. This is in line with neural work showing age lessens perforant path input to the Dentate gyrus as well as to hyperactivity in the CA3 in more cognitively impaired older adults. LDI has been shown to relate to both structural and functional integrity within this network() Age, however has little or no impact on the Recognition index (REC) in the task, a measure of being able to differentiate new, dissimilar objects from the images they had seen before(Stark and Stark 2017; Webb et al. 2020).Â  The LDI has also been shown to be sensitive in discriminating healthy cognitive aging from amnestic Mild Cognitive Impairment (aMCI), a condition with high risk for Alzheimer's Disease. These findings have been found to hold over a variety of task variations and conditions showing that this effect is robust.
+Healthy cognitive aging has a selective impact on task performance in the MST. Age specifically reduces the Lure Discrimination Index (LDI), a measure of the ability to discriminate these Similar novel images (termed Lures) from those images they had previously seen. The LDI is taken as an indirect index of pattern separation. This is in line with neural work showing age lessens perforant path input to the Dentate gyrus as well as to hyperactivity in the CA3 in more cognitively impaired older adults. LDI has been shown to relate to both structural and functional integrity within this network() Age, however has little or no impact on the Recognition index (REC) in the task, a measure of being able to differentiate new, dissimilar objects from the images they had seen before(Stark and Stark 2017; Webb et al. 2020).  The LDI has also been shown to be sensitive in discriminating healthy cognitive aging from amnestic Mild Cognitive Impairment (aMCI), a condition with high risk for Alzheimer's Disease. These findings have been found to hold over a variety of task variations and conditions showing that this effect is robust.
 
 Given the importance of these findings, it should come as no surprise the MST has become widely used across labs. However, we have found no publications of the MST being used in an online setting. Online behavioral testing provides several benefits, including access to larger samples, access to atypical samples for psychology, less of a burden on both the experimenters and participants in terms of scheduling and coordinating experimental sessions, and finally safety when it comes to a situation like the COVID-19 pandemic().
 
@@ -31,7 +24,7 @@ The goal of the current pilot study was to design an online variant of the MST t
 
 ### Participants
 
-We recruited 100 YA between the ages of 18-30 and 100 OA participants between the age of 60-80. Of these, 84 younger adults(Age: M=23.7, SD=3.77) and 77 older adultsÂ  (Age: M=65.7,SD=4.96)passed attention-check criteria and were included for further analysis. The YA group consisted of 46 women, 36 men, 1 non-binary person, and one person not identifying. The OAÂ  77 OA consisted of 42 women, 32 men, and 3 people not identifying.
+We recruited 100 YA between the ages of 18-30 and 100 OA participants between the age of 60-80. Of these, 84 younger adults(Age: M=23.7, SD=3.77) and 77 older adults  (Age: M=65.7,SD=4.96)passed attention-check criteria and were included for further analysis. The YA group consisted of 46 women, 36 men, 1 non-binary person, and one person not identifying. The OA  77 OA consisted of 42 women, 32 men, and 3 people not identifying.
 
 In both groups, the majority of participants identified as White (OA=68, YA=50), while qualitatively it appears the younger adult sample was more racially and ethnically diverse than the older adult sample. In the OA group, 4 people identified as Black, 1 as Indigenous, 2 as Middle Eastern, and 1 did not identify. 2 of the OA participants also identified as Hispanic and/or Latinx. In the YA group, 18 people identified as Asian, 9 as Black or, and 8 as Middle Eastern. 14 of the YA participants also identified as Hispanic and/or Latinx.
 
@@ -51,7 +44,9 @@ The Test Phase consisted of 192 test trials with 12 attention-checks trials, tot
 
 Images were taken from the Mnemonic Similarity Task Repository available at (). We used Set 1 from the freely available set of normed images with the images used for the Attention Check images taken from Sets 2 & 3 from the repository. The Task itself was written in jsPsych and hosted on Cognition.run. All analyses for the study were conducted in R.
 
-![](MSTExample.jpg)
+![](MST/MSTPilot/MSTExample.jpg)
+
+![](MST/MSTPilot/MSTExample2.JPG)
 
 ![Figure 1a. The Mnemonic Similarity Task : Example stimuli during the Incidental Encoding Phase and a corresponding image in the Test Phase representing the three possible Test conditions. Note that these are toy examples and not actually used in the experiment.Figure 1b: Examples of images for each of the lure bins, ranging from the most similar (lure bin 1) to least similar (lure bin 5). Note that these are toy examples and have not actually been normed with the exception of the image of the rubber ducky.](MSTExample2.JPG)
 
@@ -67,9 +62,11 @@ The Recognition Index (REC) for repeat items was calculated as the difference be
 
 Taken together the goal of the current study is to replicate lab-based age-related effects of MST behavior using a a novel online variant of the task on a sample of older and younger adults.
 
-## Results
+## Sample Results
 
-### Accuracy and Response Times Across Age Groups![Fig. 2: Accuracy and responbhewjd;BWEIOUJse time in the Online Mnemonic Similarity Task](figs/Fig1.png "Fig 2: Accuract abd Response Times Across Age Groups"){width="758"}
+### Accuracy and Response Times Across Age Groups
+
+![](MST/MSTPilot/figs/Fig1.png)
 
 To first gain a baseline understanding of the task, we looked at Overall accuracy and response times. Performance was above chance in both age groups, with both younger and older adults correctly identifying new and old stimuli XXX% of the time, and similar XX% of the time. Importantly, we did have a subset of older and younger adults who performed below chance (33%) and have included an analysis showing that exclusion of these participants does not affect the outcomes of the analyses (see Supplementary Analyses)
 
@@ -79,7 +76,7 @@ To understand if stimulus type ("New","Similar","Old") and Age Group impacted re
 
 ### LDI and REC
 
-### ![](figs/Fig2.png)
+### ![](MST/MSTPilot/figs/Fig2.png)
 
 To examine the impact of Age Group on the Recognition Index score, we conducted a Two-Samples T-Test and found that the two age groups did not differ in their Recognition Index (p=.77).
 
@@ -89,7 +86,7 @@ Importantly, all of these effects survive even when we exclude participant whose
 
 ### Lure Discrimination Across Levels of Similarity
 
-![](Pilot/Fig4.jpg)
+![](MST/MSTPilot/figs/AccuracyByBins.png)
 
 To determine if we could replicate difficulty-based accuracy on "Similar" trials, we broke down Similar stimuli trials by their Lure Bin (with Bin 1 being the most similar and Bin 5 being the least Similar) The level of similarity being between Encoding Images and their Similar Lures in the Test Phase, with the greater the similarity being the most difficult. We conducted a mixed-effects ANOVA with Group as a between-subjects factor and lure bin as a within-subjects factor. We found a main effect of Age Group with OA being less accurate overall (obvious given the LDI result). We also found a main effect of Lure Bin with less similar bins having a an overall higher level of accuracy, F(4,551)=193.60, p\<.001. Consistent with previous findings, we found no interaction between Age Group and Lure Bin (p=.697)
 
@@ -100,19 +97,3 @@ In this study, we have shown we can replicate age-group and similarity-dependent
 However, the question still remains as to how performance in this online setting directly compares to performance in lab-based variants. Overall accuracy with both "Old" and "New" stimuli types from our study followed closely in line with lab-based studies. However, this is not the case with the Similar trials where in this online variant we have found that both age groups are performing better than what has been shown in lab-based studies, specifically noticeable for older adults.
 
 Qualitatively, we found a smaller effect size for age-based LDI differences than has been found within in-person studies. There could be several reasons for this. One is that this could be related to the difference in sample sizes across these studies, with the in-person studies typically having half or less than the current study's sample in each age group. This could lead to inflated effect sizes. There could also be differences in this older adult's groups comfort with technology compared to in-person samples, as well as differences in motivation that differentially impact their motivation for the more difficult similar trials. There is also the question of whether we can capture meaningful individual differences with the MST-O, which will require testing the same individuals over multiple time points. These are all important considerations and experiments addressing these issues will be important future directions for this line of research.
-
--   Small initial sample, need for larger set to say anything definitive, but have been able to show replications of published studies using the MST-O.
-
--   Show close replications (perhaps run simulations based on previously published data to directly compare effects to the Online version).
-
--   The need for larger samples in aging and cognition research, neuropsychology, and how online behavioral testing may be a rather effective method for doing this.
-
--   Test-Retest reliability?
-
--   Talk about running the different versions online, or running this in samples with full neuropsych already done.
-
--   Limitation of this study is lack of other neuropsych measures.Â 
-
-## Supplementary Analyses
-
-For the following analyses we removed all individual participants who showed response patterns in line with previous lab-based studies, including those who never or almost never clicked Old for a response, in line with misunderstanding the task. The effects all hold from the main analyses.
