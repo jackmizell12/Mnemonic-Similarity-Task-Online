@@ -103,7 +103,7 @@ Qualitatively, we found a smaller effect size for age-based LDI differences than
 
 ## File List
 
--Mnemonic Similarity Task : Code for the task itself, written in JavaScript using JSPsych, designed to run on Cognition.Run and to get participants from Prolific.Com. Note that this version of the task also begins with the Survey of Autobiographical Memory, a self-report survey for how people feel about their memory abilities. 
+-Mnemonic Similarity Task : Code for the task itself, written in JavaScript using JSPsych, designed to run on Cognition.Run and to get participants from Prolific.Com. Note that this version of the task also begins with the Survey of Autobiographical Memory, a self-report survey for how people feel about their memory abilities. The image and video files in this task are drawn from https://github.com/celstark/MST
 
 -MSTPilotAnalysisRedux.R : Master analysis sheet for the study to reproduce the figures and analyses seen in this file. Uses MSTOlderPilot.csv and MSTYoungerPilot.csv which should be in the same folder as this script to work.
 
