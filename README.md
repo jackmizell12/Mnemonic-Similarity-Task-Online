@@ -100,3 +100,26 @@ In this study, we have shown we can replicate age-group and similarity-dependent
 However, the question still remains as to how performance in this online setting directly compares to performance in lab-based variants. Overall accuracy with both "Old" and "New" stimuli types from our study followed closely in line with lab-based studies. However, this is not the case with the Similar trials where in this online variant we have found that both age groups are performing better than what has been shown in lab-based studies, specifically noticeable for older adults.
 
 Qualitatively, we found a smaller effect size for age-based LDI differences than has been found within in-person studies. There could be several reasons for this. One is that this could be related to the difference in sample sizes across these studies, with the in-person studies typically having half or less than the current study's sample in each age group. This could lead to inflated effect sizes. There could also be differences in this older adult's groups comfort with technology compared to in-person samples, as well as differences in motivation that differentially impact their motivation for the more difficult similar trials. There is also the question of whether we can capture meaningful individual differences with the MST-O, which will require testing the same individuals over multiple time points. These are all important considerations and experiments addressing these issues will be important future directions for this line of research.
+
+## File List
+
+-Mnemonic Similarity Task : Code for the task itself, written in JavaScript using JSPsych, designed to run on Cognition.Run and to get participants from Prolific.Com. Note that this version of the task also begins with the Survey of Autobiographical Memory, a self-report survey for how people feel about their memory abilities. 
+
+-MSTPilotAnalysisRedux.R : Master analysis sheet for the study to reproduce the figures and analyses seen in this file. Uses MSTOlderPilot.csv and MSTYoungerPilot.csv which should be in the same folder as this script to work.
+
+-MSTOlderPilot.csv : Cleaned code file with all of the Older adult participant data from the study.
+
+-MSTYoungerPilot.csv : Cleaned code file with all of the Younger adult participant data from the study.
+
+-OrderEffectsAnalysis.R : This script uses a hierarchical logistic regression to understand if and how the previous trial affects your answers on the current question. It uses the ForLogistic.csv which needs to be in the same folder as this script to work. 
+
+-ForLogistic.csv : Cleaned dataset for the analysis of by trial behavior in the OrderEffectsAnalysis.R
+
+
+
+
+
+
+
+
+
