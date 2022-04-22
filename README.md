@@ -69,9 +69,9 @@ Taken together the goal of the current study is to replicate lab-based age-relat
 
 ![Fig1](https://user-images.githubusercontent.com/7660406/156936344-0218e009-0dc2-4f89-9c01-dcc550c9c692.png)
 
-To first gain a baseline understanding of the task, we looked at Overall accuracy and response times. Performance was above chance in both age groups, with both younger and older adults correctly identifying new and old stimuli XXX% of the time, and similar XX% of the time. Importantly, we did have a subset of older and younger adults who performed below chance (33%) and have included an analysis showing that exclusion of these participants does not affect the outcomes of the analyses (see Supplementary Analyses)
+To first gain a baseline understanding of the task, we looked at Overall accuracy and response times. Performance was above chance in both age groups. Importantly, we did have a subset of older and younger adults who performed below chance (33%) and have included an analysis showing that exclusion of these participants does not affect the outcomes of the analyses (see Supplementary Analyses)
 
-To understand if stimulus type ("New","Similar","Old") and Age Group impacted Accuracy in the Online MST-O, we conducted a mixed effect ANOVA with age group as a between-subjects factor and Stimuli Type as a within-subjects factor. We found a main effect of Stimuli Type F(2,308)=290.64,p\<.001, with no effect of Age Group (p=.256) and no Interaction effect between Age Group and Stimuli Type (p=.080).
+To understand if stimulus type ("New","Similar","Old") and Age Group impacted Accuracy in the Online MST-O, we conducted a mixed effect ANOVA with age group as a between-subjects factor and Stimuli Type as a within-subjects factor. We found a main effect of Stimuli Type F(2,308)=290.64,p<.001, with no effect of Age Group (p=.256) and no Interaction effect between Age Group and Stimuli Type (p=.080).
 
 To understand if stimulus type ("New","Similar","Old") and Age Group impacted response times in the Online MST-O, we conducted a mixed effect ANOVA with Age Group as a between-subjects factor and Stimuli Type as a within-subjects factor. We found a main effect of Stimuli Type F(2,300)=25.57,p\<.001, a main effect effect of Age Group F(1,159)=59.42,p\<.001, and no Interaction effect between Age Group and Stimuli Type (p=.816).
 
